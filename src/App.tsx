@@ -33,7 +33,7 @@ const Navbar = ({ theme, toggleTheme }: { theme: 'light' | 'dark', toggleTheme: 
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center">
           <img 
-            src={theme === 'dark' ? '/prism-logo-dark.png' : '/prism-logo-light.png'} 
+            src={theme === 'dark' ? `${import.meta.env.BASE_URL}prism-logo-dark.png` : `${import.meta.env.BASE_URL}prism-logo-light.png`}
             alt="PRISM" 
             className="h-24 md:h-28 w-auto object-contain drop-shadow-lg"
           />
@@ -67,7 +67,7 @@ const Navbar = ({ theme, toggleTheme }: { theme: 'light' | 'dark', toggleTheme: 
           >
             <div className="flex justify-between items-center mb-12">
               <img 
-                src={theme === 'dark' ? '/prism-logo-dark.png' : '/prism-logo-light.png'} 
+                src={theme === 'dark' ? `${import.meta.env.BASE_URL}prism-logo-dark.png` : `${import.meta.env.BASE_URL}prism-logo-light.png`}
                 alt="PRISM" 
                 className="h-20 w-auto object-contain"
               />
@@ -260,7 +260,7 @@ const Footer = ({ theme }: { theme: 'light' | 'dark' }) => {
         <div className="max-w-md">
           <div className="flex items-center mb-8">
             <img 
-              src={theme === 'dark' ? '/prism-logo-dark.png' : '/prism-logo-light.png'} 
+              src={theme === 'dark' ? `${import.meta.env.BASE_URL}prism-logo-dark.png` : `${import.meta.env.BASE_URL}prism-logo-light.png`}
               alt="PRISM" 
               className="h-32 md:h-40 w-auto object-contain drop-shadow-xl"
             />
