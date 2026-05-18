@@ -1,0 +1,8 @@
+{
+  "name": "Prism Spectral Studio",
+  "description": "A high-end, immersive digital experience exploring the intersection of light, shadow, and spectral design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

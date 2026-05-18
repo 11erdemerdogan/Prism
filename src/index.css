@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-prism-white: #FFFFFF;
+  --color-prism-black: #050505;
+  --color-prism-silver: #E8E8E8;
+  --color-prism-chrome: #B0B0B0;
+}
+
+:root {
+  --chromatic-border: linear-gradient(135deg, rgba(255,0,60,0.5), rgba(0,255,102,0.5), rgba(0,136,255,0.5));
+}
+
+
+@layer base {
+  body {
+    @apply font-sans antialiased selection:bg-white/20 selection:text-white;
+  }
+}
+
+@layer utilities {
+  .spectral-gradient {
+    background: linear-gradient(
+      90deg,
+      #ff0000,
+      #ff7f00,
+      #ffff00,
+      #00ff00,
+      #0000ff,
+      #4b0082,
+      #8f00ff
+    );
+  }
+
+  .glass-morph {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+
+  .text-shadow-spectral {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Glassmorphism 2.0 Custom Styles */
+  .glass-btn {
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-20deg);
+    transition: all 0.6s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .glass-btn:hover::before {
+    left: 200%;
+  }
+
+  .glass-btn.primary-btn {
+    border: none;
+    padding: 1px; /* Border width */
+    background: var(--chromatic-border);
+  }
+
+  .glass-btn.primary-btn::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--color-prism-black); /* Will be overridden by theme if needed, but defaults to dark bg to show spectrum */
+    border-radius: 9999px;
+    z-index: 0;
+    transition: background 0.3s ease;
+  }
+  
+  :root[data-theme="light"] .glass-btn.primary-btn::after {
+    background: var(--color-prism-white);
+  }
+
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Chromatic Aberration Border Effect */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    padding: 1px;
+    background: var(--chromatic-border);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Inner refraction on hover */
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+  }
+
+  .glass-card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
